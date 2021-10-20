@@ -17,7 +17,11 @@ export class FormularioComponent  {
   apellidoInput: string = '';
 
   constructor(private loggingService:LoggingService,
-              private personasService: PersonasService){ }
+              private personasService: PersonasService){ 
+                this.personasService.saludar.subscribe(
+                  (indice: number) => alert("El indice es " + indice)
+                );
+              }
 
   agregarPersona(){
     let persona1 = new Persona(this.nombreInput, this.apellidoInput);
