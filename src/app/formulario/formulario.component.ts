@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Injectable } from "@angular/core";
 import { LoggingService } from "../LogginService.service";
 import { Persona } from "../persona.model";
 import { PersonasService } from "../personas.service";
