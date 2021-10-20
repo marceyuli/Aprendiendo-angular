@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component } from "@angular/core";
 import { LoggingService } from "../LogginService.service";
 import { Persona } from "../persona.model";
+import { PersonasService } from "../personas.service";
 
 
 @Component({
@@ -10,17 +11,19 @@ import { Persona } from "../persona.model";
 })
 export class FormularioComponent  {
 
-  @Output() personaCreada = new EventEmitter<Persona>();
+ // @Output() personaCreada = new EventEmitter<Persona>();
 
   nombreInput: string = '';
   apellidoInput: string = '';
 
-  constructor(private loggingService:LoggingService){ }
+  constructor(private loggingService:LoggingService,
+              private personasService: PersonasService){ }
 
   agregarPersona(){
     let persona1 = new Persona(this.nombreInput, this.apellidoInput);
-    this.loggingService.enviaMensajeAConsola("Enviamos persona " + persona1.nombre);
-    this.personaCreada.emit(persona1);
+  //  this.loggingService.enviaMensajeAConsola("Enviamos persona " + persona1.nombre);
+    //this.personaCreada.emit(persona1);
+    this.personasService.personaAgregada(persona1);
   }
 
 }
