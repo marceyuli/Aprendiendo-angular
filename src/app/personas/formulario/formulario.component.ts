@@ -1,4 +1,5 @@
 import { Component, Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { LoggingService } from "../../LogginService.service";
 import { Persona } from "../../persona.model";
 import { PersonasService } from "../../personas.service";
@@ -17,7 +18,8 @@ export class FormularioComponent  {
   apellidoInput: string = '';
 
   constructor(private loggingService:LoggingService,
-              private personasService: PersonasService){ 
+              private personasService: PersonasService,
+              private router: Router){ 
                 this.personasService.saludar.subscribe(
                   (indice: number) => alert("El indice es " + indice)
                 );
@@ -28,6 +30,7 @@ export class FormularioComponent  {
   //  this.loggingService.enviaMensajeAConsola("Enviamos persona " + persona1.nombre);
     //this.personaCreada.emit(persona1);
     this.personasService.personaAgregada(persona1);
+    this.router.navigate(['personas']);
   }
 
 }

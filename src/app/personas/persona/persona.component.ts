@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Persona } from '../../persona.model';
 import { PersonasService } from '../../personas.service';
 
@@ -13,6 +14,8 @@ export class PersonaComponent  {
 
   constructor(private personasService: PersonasService){}
   
+  
+
   emitirSaludo(){
     this.personasService.saludar.emit(this.indice);
   }
