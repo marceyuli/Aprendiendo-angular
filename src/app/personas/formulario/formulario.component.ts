@@ -1,7 +1,7 @@
 import { Component, Injectable } from "@angular/core";
-import { LoggingService } from "../LogginService.service";
-import { Persona } from "../persona.model";
-import { PersonasService } from "../personas.service";
+import { LoggingService } from "../../LogginService.service";
+import { Persona } from "../../persona.model";
+import { PersonasService } from "../../personas.service";
 
 
 @Component({
