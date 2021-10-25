@@ -1,8 +1,8 @@
 <div style="text-align: center">
-  <button style="cursor: pointer" (click)="agregar()">+</button>
+  <button   class="btn btn-outline-primary" (click)="agregar()">Añadir</button>
 </div>
 
-<div class="box">
+<div class="container-sm">
   <app-persona
     *ngFor="let personaElemento of personas; let i = index"
     [persona]="personaElemento"

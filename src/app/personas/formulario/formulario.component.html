@@ -1,6 +1,6 @@
-<div class="box">
-<form class="item" #f="ngForm" (ngSubmit)="f.form.valid && agregarPersona()">
-    <div class="form-group col-md-2">
+<div div class="container-sm">
+<form  #f="ngForm" (ngSubmit)="f.form.valid && agregarPersona()">
+    <div class="form-group col-md-6">
       <label for="nombre" class="sr-only">Nombre</label>
       <input
         type="text"
@@ -11,7 +11,7 @@
         [(ngModel)]="nombreInput" required
       />
     </div>
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-6">
       <label for="apellido" class="sr-only">Apellido</label>
       <input
         type="text"
@@ -22,9 +22,11 @@
         [(ngModel)]="apellidoInput" required
       />
     </div>
+
+    
     <div class="col">
-      <button type="submit"  style="cursor: pointer;">
-        +
+      <button type="submit"  class="btn btn-outline-primary">
+        Añadir
       </button>
     </div>
   </form>

@@ -1,5 +1,5 @@
 import { Component, Injectable } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { LoggingService } from "../../LogginService.service";
 import { Persona } from "../../persona.model";
 import { PersonasService } from "../../personas.service";
@@ -16,20 +16,32 @@ export class FormularioComponent  {
 
   nombreInput: string = '';
   apellidoInput: string = '';
+  index: number;
 
   constructor(private loggingService:LoggingService,
               private personasService: PersonasService,
-              private router: Router){ 
+              private router: Router,
+              private route: ActivatedRoute){ 
                 this.personasService.saludar.subscribe(
                   (indice: number) => alert("El indice es " + indice)
                 );
               }
 
+  ngOnInit(){
+    this.index = this.route.snapshot.params['id']; //como esta en app routing
+    if(this.index){ //estamos en modo edicion
+      let persona: Persona = this.personasService.encontrarPersona(this.index);
+      this.nombreInput = persona.nombre;
+      this.apellidoInput = persona.apellido;
+    } 
+  }
   agregarPersona(){
     let persona1 = new Persona(this.nombreInput, this.apellidoInput);
-  //  this.loggingService.enviaMensajeAConsola("Enviamos persona " + persona1.nombre);
-    //this.personaCreada.emit(persona1);
+    if(this.index){ //estoy en modo edicion
+      this.personasService.modificarPersona(this.index,persona1);
+    }else{ //estoy agregando una nueva persona
     this.personasService.personaAgregada(persona1);
+    }
     this.router.navigate(['personas']);
   }
 

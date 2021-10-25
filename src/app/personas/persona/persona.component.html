@@ -2,10 +2,14 @@
   <div class="row">
     <div class="col">
       <div>
-        {{ indice + 1 }}: {{ persona.nombre }} {{ persona.apellido }}
-        <button type="submit" class="btn btn-info" (click)="emitirSaludo()">
-          Editar
-        </button>
+        <ul>
+          <li>
+            <a [routerLink] = "['/personas', indice]">
+              {{ persona.nombre }} {{ persona.apellido }}
+            </a>
+          </li>
+        </ul>
+        
       </div>
     </div>
   </div>
