@@ -28,6 +28,9 @@
       <button type="submit"  class="btn btn-outline-primary">
         Añadir
       </button>
+      <button *ngIf="index != null" type="submit"  class="btn btn-outline-danger" (click)="eliminarPersona()">
+        Eliminar
+      </button>
     </div>
   </form>
 </div>

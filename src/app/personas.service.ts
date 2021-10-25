@@ -26,4 +26,7 @@ export class PersonasService{
     persona1.nombre = persona.nombre;
     persona1.apellido = persona.apellido;
   }
+  eliminarPersona(index:number){
+    this.personas.splice(index,1);
+  }
 }
