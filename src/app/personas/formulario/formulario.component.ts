@@ -17,6 +17,7 @@ export class FormularioComponent  {
   nombreInput: string = '';
   apellidoInput: string = '';
   index: number;
+  modoEdicion: number;
 
   constructor(private loggingService:LoggingService,
               private personasService: PersonasService,
@@ -29,7 +30,9 @@ export class FormularioComponent  {
 
   ngOnInit(){
     this.index = this.route.snapshot.params['id']; //como esta en app routing
-    if(this.index){ //estamos en modo edicion
+    this.modoEdicion = +this.route.snapshot.queryParams['modoEdicion'];
+
+    if(this.modoEdicion != null && this.modoEdicion == 1){ //estamos en modo edicion
       let persona: Persona = this.personasService.encontrarPersona(this.index);
       this.nombreInput = persona.nombre;
       this.apellidoInput = persona.apellido;
@@ -37,7 +40,7 @@ export class FormularioComponent  {
   }
   agregarPersona(){
     let persona1 = new Persona(this.nombreInput, this.apellidoInput);
-    if(this.index){ //estoy en modo edicion
+    if(this.modoEdicion != null && this.modoEdicion == 1){ //estoy en modo edicion
       this.personasService.modificarPersona(this.index,persona1);
     }else{ //estoy agregando una nueva persona
     this.personasService.personaAgregada(persona1);
